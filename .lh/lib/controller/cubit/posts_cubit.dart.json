@@ -1,0 +1,22 @@
+{
+    "sourceFile": "lib/controller/cubit/posts_cubit.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1726581857085,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1726581884482,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n       final response = await http.get(Uri.parse(url));\n       if (response.statusCode == 200 && response.body.isNotEmpty){\n         final List<dynamic> jsonDecodeList = jsonDecode(response.body);\n         posts = jsonDecodeList.map((json) => Posts.fromJson(json)).toList();\n-       \n+        emit(DataReach());\n         \n       }\n }\n }\n"
+                }
+            ],
+            "date": 1726581857085,
+            "name": "Commit-0",
+            "content": "import 'dart:convert';\n\nimport 'package:bloc/bloc.dart';\nimport 'package:flutter_application_1/model/model.dart';\nimport 'package:meta/meta.dart';\nimport 'package:http/http.dart' as http;\n\npart 'posts_state.dart';\n\nclass PostsCubit extends Cubit<PostsState> {\n  PostsCubit() : super(PostsInitial());\n\n\n    List<Posts>? posts;\n     String url =  \"https://jsonplaceholder.typicode.com/posts\";\n\n     Future <void>  getPosts() async {\n      final response = await http.get(Uri.parse(url));\n      if (response.statusCode == 200 && response.body.isNotEmpty){\n        final List<dynamic> jsonDecodeList = jsonDecode(response.body);\n        posts = jsonDecodeList.map((json) => Posts.fromJson(json)).toList();\n       \n        \n      }\n}\n}\n"
+        }
+    ]
+}
